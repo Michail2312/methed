@@ -19,14 +19,12 @@ interface Admin {
 
 type Person = User | Admin;
 
-const isAdmin = (user: Person): user is Admin => {
-  if (user.type === TypeUser.ADMIN) return true;
-  else return false;
+const isAdmin = (person: Person): person is Admin => {
+  return person.type === TypeUser.ADMIN;
 };
 
-const isUser = (user: Person): user is User => {
-  if (user.type === TypeUser.USER) return true;
-  else return false;
+const isUser = (person: Person): person is User => {
+  return person.type === TypeUser.USER;
 };
 
 const persons: Person[] = [
