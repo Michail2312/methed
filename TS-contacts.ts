@@ -24,6 +24,11 @@ const isAdmin = (user: Person): user is Admin => {
   else return false;
 };
 
+const isUser = (user: Person): user is User => {
+  if (user.type === TypeUser.USER) return true;
+  else return false;
+};
+
 const persons: Person[] = [
   {
     type: TypeUser.USER,
@@ -64,13 +69,19 @@ const persons: Person[] = [
 ];
 
 const logPerson = (person: Person) => {
-  let information: string;
+  let information: string = '';
   if (isAdmin(person)) {
     information = person.role;
-  } else {
+  }
+  if (isUser(person)) {
     information = person.group;
   }
   console.log(`${person.name}, ${person.age}, ${information}`);
 };
 
-persons.forEach(logPerson);
+console.log('Admins:');
+persons.filter(isAdmin).forEach(logPerson);
+console.log();
+
+console.log('Users:');
+persons.filter(isUser).forEach(logPerson);
