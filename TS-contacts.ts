@@ -13,7 +13,7 @@ interface Admin {
 type Person = User | Admin;
 
 const isAdmin = (person: Person): person is Admin => {
-  return (person as Admin).role !== undefined;
+  return 'role' in person;
 };
 
 const persons: Person[] = [
