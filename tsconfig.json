@@ -4,6 +4,7 @@
     "target": "ESNext",
     "module": "commonjs",
     "esModuleInterop": true,
+    "strictPropertyInitialization": false,
     "forceConsistentCasingInFileNames": true,
     "noEmitOnError": true,
     "strict": true,
