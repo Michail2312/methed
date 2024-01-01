@@ -1,4 +1,4 @@
-interface User {
+{interface User {
   name: string;
   age: number;
   group: string;
@@ -60,3 +60,4 @@ const logPerson = (person: Person) => {
 };
 
 persons.forEach(logPerson);
+}
