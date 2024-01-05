@@ -12,7 +12,7 @@ export class Person {
   get employeeInfo() {
     return { name: this._name, role: this._Job.role };
   }
-  getSalary() {
+  get getSalary() {
     return this._Job.salary;
   }
   work() {
