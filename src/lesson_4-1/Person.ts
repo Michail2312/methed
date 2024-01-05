@@ -1,22 +1,22 @@
-import { Job, pulling, pushing } from './Job';
+import { Job } from './Job';
 
 export class Person {
-  private name: string;
-  private Job: Job = new Job();
+  private _name: string;
+  private _Job: Job = new Job();
   constructor(name: string) {
-    this.name = name;
+    this._name = name;
   }
   set changeJob(job: Job) {
-    this.Job = job;
+    this._Job = job;
   }
   get employeeInfo() {
-    return { name: this.name, role: this.Job.roleEmployee };
+    return { name: this._name, role: this._Job.role };
   }
   getSalary() {
-    return this.Job.salaryEmployee;
+    return this._Job.salary;
   }
   work() {
-    return(`${this.name} сейчас работает`);
+    return(`${this._name} сейчас работает`);
   }
 }
 

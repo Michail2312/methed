@@ -1,23 +1,23 @@
 import { Person } from './Person';
 
 export class Job {
-  private role: string;
-  private salary: number = 0;
+  private _role: string;
+  private _salary: number = 0;
   constructor(role?: string, salary?: number);
   constructor(role: string, salary: number) {
     if (typeof role === 'undefined' && typeof salary === 'undefined') {
-      this.role = 'Безработный';
-      this.salary = 0;
+      this._role = 'Безработный';
+      this._salary = 0;
     } else {
-      this.role = role;
-      this.salary = salary;
+      this._role = role;
+      this._salary = salary;
     }
   }
-  get salaryEmployee(): number {
-    return this.salary;
+  get salary(): number {
+    return this._salary;
   }
-  get roleEmployee(): string {
-    return this.role;
+  get role(): string {
+    return this._role;
   }
 
   static work(personName: Person) {
