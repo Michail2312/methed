@@ -2,16 +2,10 @@ import { Person } from './Person';
 
 export class Job {
   private _role: string;
-  private _salary: number = 0;
-  constructor(role?: string, salary?: number);
+  private _salary: number;
   constructor(role: string, salary: number) {
-    if (typeof role === 'undefined' && typeof salary === 'undefined') {
-      this._role = 'Безработный';
-      this._salary = 0;
-    } else {
-      this._role = role;
-      this._salary = salary;
-    }
+    this._role = role;
+    this._salary = salary;
   }
   get salary(): number {
     return this._salary;
@@ -21,7 +15,7 @@ export class Job {
   }
 
   static work(personName: Person) {
-    return(`${personName.employeeInfo.name} сейчас работает как ${personName.employeeInfo.role}`);
+    return `${personName.employeeInfo.name} сейчас работает как ${personName.employeeInfo.role}`;
   }
 }
 
