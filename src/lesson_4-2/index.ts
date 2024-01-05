@@ -1,52 +1,17 @@
-import { AbstractSelling } from './AbstractSelling';
-import { Product, xiaomi, samsung } from './Product';
+import { Product } from './Product';
+import { DiscountSelling } from './DiscountSelling';
+import { DiscountSelling2 } from './DiscountSelling2';
 
-class DiscountSelling extends AbstractSelling {
-  constructor(_product: Product, _quantityOfGoods?: number);
-  constructor(public _product: Product, public _quantityOfGoods: number) {
-    super();
-    this._product = _product;
-    this._quantityOfGoods =
-      typeof _quantityOfGoods === 'undefined'
-        ? (this.quantity = 1)
-        : this._quantityOfGoods;
-  }
+const xiaomi = new Product('xiaomi', 50);
+const samsung = new Product('samsung', 100);
 
-  getPrice(): number {
-    return (this._product.price - 10) * this._quantityOfGoods;
-  }
-}
-
-const xiaomiPhone = new DiscountSelling(xiaomi, 3);
+const xiaomiPhone = new DiscountSelling(xiaomi);
 const samsungPhone = new DiscountSelling(samsung);
-// console.log(xiaomiPhone.getPrice());
-// console.log(samsungPhone);
 
-class DiscountSelling2 extends AbstractSelling {
-  constructor(_product: Product, _quantityOfGoods?: number);
-  constructor(public _product: Product, public _quantityOfGoods: number) {
-    super();
-    this._product = _product;
-    this._quantityOfGoods =
-      typeof _quantityOfGoods !== 'undefined' ? this._quantityOfGoods : 1;
-  }
-
-  getPrice(): number {
-    if (this._quantityOfGoods < 3) {
-      return this._product.price * this._quantityOfGoods;
-    } else
-      return (
-        (this._product.price - (this._product.price * 10) / 100) *
-        this._quantityOfGoods
-      );
-  }
-}
-
-const xiaomiPhone2 = new DiscountSelling2(xiaomi, 3);
+const xiaomiPhone2 = new DiscountSelling2(xiaomi);
 const samsungPhone2 = new DiscountSelling2(samsung, 3);
-console.log(xiaomiPhone2.quantity);
-console.log(xiaomiPhone2.getPrice());
+
+console.log(xiaomiPhone2);
 xiaomiPhone2.quantity = 5;
-console.log(xiaomiPhone2.quantity);
-console.log(xiaomiPhone2.getPrice());
-// console.log(samsungPhone2.getPrice());
+console.log(xiaomiPhone2);
+console.log(samsungPhone2);

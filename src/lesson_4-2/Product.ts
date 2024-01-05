@@ -23,6 +23,5 @@ export class Product {
   }
 }
 
-export const xiaomi = new Product('xiaomi', 50);
-export const samsung = new Product('samsung', 100);
+
 
