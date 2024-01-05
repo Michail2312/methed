@@ -8,7 +8,7 @@ class DiscountSelling extends AbstractSelling {
     this._product = _product;
     this._quantityOfGoods =
       typeof _quantityOfGoods === 'undefined'
-        ? (this.setQuantity = 1)
+        ? (this.quantity = 1)
         : this._quantityOfGoods;
   }
 
@@ -44,9 +44,9 @@ class DiscountSelling2 extends AbstractSelling {
 
 const xiaomiPhone2 = new DiscountSelling2(xiaomi, 3);
 const samsungPhone2 = new DiscountSelling2(samsung, 3);
-console.log(xiaomiPhone2.getQuantity);
+console.log(xiaomiPhone2.quantity);
 console.log(xiaomiPhone2.getPrice());
-xiaomiPhone2.setQuantity = 5;
-console.log(xiaomiPhone2.getQuantity);
+xiaomiPhone2.quantity = 5;
+console.log(xiaomiPhone2.quantity);
 console.log(xiaomiPhone2.getPrice());
 // console.log(samsungPhone2.getPrice());

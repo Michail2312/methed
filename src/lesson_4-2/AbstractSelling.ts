@@ -5,16 +5,16 @@ export abstract class AbstractSelling {
   abstract _quantityOfGoods: number;
   abstract getPrice(): number;
 
-  get getProduct(): Product {
+  get product(): Product {
     return this._product;
   }
-  set setProduct(product: Product) {
+  set product(product: Product) {
     this._product = product;
   }
-  get getQuantity(): number {
+  get quantity(): number {
     return this._quantityOfGoods;
   }
-  set setQuantity(quantity: number) {
+  set quantity(quantity: number) {
     if (typeof this._quantityOfGoods === 'undefined') {
       this._quantityOfGoods = 1;
     } else this._quantityOfGoods = quantity;
