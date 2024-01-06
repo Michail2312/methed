@@ -1,35 +1,36 @@
 import { Product } from './Product';
 import { DiscountSelling } from './DiscountSelling';
 import { DiscountSelling2 } from './DiscountSelling2';
+import { AbstractSelling } from './AbstractSelling';
 
-const xiaomi = new Product('xiaomi', 50);
-const samsung = new Product('samsung', 100);
-const nokia = new Product('nokia', 150);
-const motorola = new Product('motorola', 200);
+const product1 = new Product('product1', 50);
+const product2 = new Product('product2', 100);
+const product3 = new Product('product3', 150);
+const product4 = new Product('product4', 200);
 
-const bike = new Product('bike', 50);
-const motorbike = new Product('motorbike', 100);
-const scooter = new Product('scooter', 150);
-const car = new Product('car', 200);
+const product5 = new Product('product5', 50);
+const product6 = new Product('product6', 100);
+const product7 = new Product('product7', 150);
+const product8 = new Product('product8', 200);
 
-const xiaomiPhone = new DiscountSelling2(xiaomi, 2);
-const samsungPhone = new DiscountSelling2(samsung, 1);
-const nokiaPhone = new DiscountSelling2(nokia, 4);
-const motorolaPhone = new DiscountSelling2(motorola, 3);
+const purchase1 = new DiscountSelling2(product1, 1, 1);
+const purchase2 = new DiscountSelling2(product2, 1, 1);
+const purchase3 = new DiscountSelling2(product3, 1, 1);
+const purchase4 = new DiscountSelling2(product4, 1, 1);
 
-const bikeTransport = new DiscountSelling(bike);
-const motorbikeTransport = new DiscountSelling(motorbike);
-const scooterTransport = new DiscountSelling(scooter);
-const carTransport = new DiscountSelling(car);
+const purchase5 = new DiscountSelling(product5, 1);
+const purchase6 = new DiscountSelling(product6, 1);
+const purchase7 = new DiscountSelling(product7, 1);
+const purchase8 = new DiscountSelling(product8, 1);
 
-
-const productList: (DiscountSelling2 | DiscountSelling)[] = [
-  bikeTransport,
-  motorbikeTransport,
-  scooterTransport,
-  carTransport,
-  xiaomiPhone,
-  samsungPhone,
-  nokiaPhone,
-  motorolaPhone,
+const productList: AbstractSelling[] = [
+  purchase1,
+  purchase2,
+  purchase3,
+  purchase4,
+  purchase5,
+  purchase6,
+  purchase7,
+  purchase8,
 ];
+console.log(productList.sort((a, b) => a.compare(b)));

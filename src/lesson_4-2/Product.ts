@@ -1,25 +1,25 @@
 export class Product {
-  title: string;
-  price: number;
+  _title: string;
+  _price: number;
   constructor(title: string, price: number) {
-    this.title = title;
-    this.price = price;
+    this._title = title;
+    this._price = price;
   }
 
-  get titleProduct() {
-    return this.title;
+  get title() {
+    return this._title;
   }
 
-  set titleProduct(title: string) {
-    this.title = title;
+  set title(title: string) {
+    this._title = title;
   }
 
-  get titlePrice() {
-    return this.price;
+  get price() {
+    return this._price;
   }
 
-  set titlePrice(price: number) {
-    this.price = price;
+  set price(price: number) {
+    this._price = price;
   }
 }
 

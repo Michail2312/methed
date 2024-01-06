@@ -1,9 +1,13 @@
 import { Product } from './Product';
 
 export abstract class AbstractSelling {
-  abstract _product: Product;
-  abstract _quantityOfGoods: number;
+  private _product: Product;
+  private _quantity: number;
   abstract getPrice(): number;
+  constructor(product: Product, quantity: number) {
+    this._product = product;
+    this._quantity = quantity;
+  }
 
   get product(): Product {
     return this._product;
@@ -12,11 +16,15 @@ export abstract class AbstractSelling {
     this._product = product;
   }
   get quantity(): number {
-    return this._quantityOfGoods;
+    return this._quantity;
   }
   set quantity(quantity: number) {
-    if (typeof this._quantityOfGoods === 'undefined') {
-      this._quantityOfGoods = 1;
-    } else this._quantityOfGoods = quantity;
+    if (typeof this._quantity === 'undefined') {
+      this._quantity = 1;
+    } else this._quantity = quantity;
+  }
+
+  compare(other: AbstractSelling): number {
+    return this.getPrice() - other.getPrice();
   }
 }
