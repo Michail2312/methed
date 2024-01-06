@@ -33,4 +33,4 @@ const productList: AbstractSelling[] = [
   purchase7,
   purchase8,
 ];
-console.log(productList.sort((a, b) => a.compare(b)));
+console.log(productList.sort((a, b) => b.compare(a)));
