@@ -1,5 +1,4 @@
-import { IUser } from "./User";
-
+import { IUser } from './User';
 
 export abstract class AbstractUsers {
   protected userList: IUser[] = [];
@@ -15,5 +14,14 @@ export abstract class AbstractUsers {
   get(userId: string): IUser | null {
     const user = this.userList.find(u => u.id === userId);
     return user ? { ...user } : null;
+  }
+  sorted(sortType: 'asc' | 'desc' = 'asc') {
+    this.userList.sort((a, b): number => {
+      if (sortType === 'asc') {
+        return a.age - b.age;
+      } else {
+        return b.age - a.age;
+      }
+    });
   }
 }
