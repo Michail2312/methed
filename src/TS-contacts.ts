@@ -1,10 +1,17 @@
-{interface User {
+enum TypeUser {
+  ADMIN = 'admin',
+  USER = 'user',
+}
+
+interface User {
+  type: TypeUser.USER;
   name: string;
   age: number;
   group: string;
 }
 
 interface Admin {
+  type: TypeUser.ADMIN;
   name: string;
   age: number;
   role: string;
@@ -13,51 +20,74 @@ interface Admin {
 type Person = User | Admin;
 
 const isAdmin = (person: Person): person is Admin => {
-  return 'role' in person;
+  return person.type === TypeUser.ADMIN;
+};
+
+const isUser = (person: Person): person is User => {
+  return person.type === TypeUser.USER;
 };
 
 const persons: Person[] = [
   {
+    type: TypeUser.ADMIN,
     name: 'Иван Петров',
     age: 27,
-    group: 'SEO-специалист',
+    role: 'Administrator',
   },
   {
+    type: TypeUser.USER,
     name: 'Марат Aляуддинов',
     age: 20,
-    group: 'Музыкант',
+    group: 'музыкант',
   },
   {
-    name: 'Ренат Aляуддинов',
-    age: 22,
-    group: 'Семья',
+    type: TypeUser.USER,
+    name: 'Екатерина Попова',
+    age: 24,
+    group: 'дизайнер сайтов',
   },
   {
-    name: 'Антон Антонов',
-    age: 30,
-    group: 'Друзья',
+    type: TypeUser.ADMIN,
+    name: 'Аркадий Паравозов',
+    age: 55,
+    role: 'Системный администратор',
   },
   {
-    name: 'Клайд Бэрроу',
-    age: 25,
-    group: 'Подельники',
+    type: TypeUser.USER,
+    name: 'Даня Поперечный',
+    age: 28,
+    group: 'Комик',
   },
   {
-    name: 'Босс',
-    age: 25,
-    role: 'администратор',
+    type: TypeUser.ADMIN,
+    name: 'Олег',
+    age: 44,
+    role: 'Модератор',
   },
 ];
 
 const logPerson = (person: Person) => {
-  let information: string;
+  let information: string = '';
   if (isAdmin(person)) {
     information = person.role;
-  } else {
+  }
+  if (isUser(person)) {
     information = person.group;
   }
   console.log(`${person.name}, ${person.age}, ${information}`);
 };
 
-persons.forEach(logPerson);
-}
+const filterUsers = (persons: Person[], criteria: Partial<User>): User[] =>
+  persons.filter(isUser).filter(user => {
+    const criteriaKeys = Object.keys(criteria) as (keyof User)[];
+    return criteriaKeys.every(
+      fieldName => user[fieldName] === criteria[fieldName]
+    );
+  });
+
+console.log('Users of age 24:');
+
+filterUsers(persons, {
+  age: 24,
+}).forEach(logPerson);
+
