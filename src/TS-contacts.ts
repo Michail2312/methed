@@ -77,9 +77,9 @@ const logPerson = (person: Person) => {
   console.log(`${person.name}, ${person.age}, ${information}`);
 };
 
-const filterUsers = (persons: Person[], criteria: Partial<User>): User[] =>
-  persons.filter(isUser).filter(user => {
-    const criteriaKeys = Object.keys(criteria) as (keyof User)[];
+const filterUsers = (persons: Person[], criteria: Partial<Person>): Person[] =>
+  persons.filter(user => {
+    const criteriaKeys = Object.keys(criteria) as (keyof Person)[];
     return criteriaKeys.every(
       fieldName => user[fieldName] === criteria[fieldName]
     );
@@ -88,6 +88,6 @@ const filterUsers = (persons: Person[], criteria: Partial<User>): User[] =>
 console.log('Users of age 24:');
 
 filterUsers(persons, {
-  age: 24,
+  age: 19,
 }).forEach(logPerson);
 
