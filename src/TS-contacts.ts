@@ -88,6 +88,6 @@ const filterUsers = (persons: Person[], criteria: Partial<Person>): Person[] =>
 console.log('Users of age 24:');
 
 filterUsers(persons, {
-  age: 19,
+  age: 24,
 }).forEach(logPerson);
 
