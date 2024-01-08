@@ -9,12 +9,10 @@ students.add(student1);
 students.add(student2);
 students.add(student3);
 
-students.sorted('desc')
-
-console.log(students);
+console.log(students.get(student3.id));
 console.log('#####################');
 
 employees.add(employee1);
-employees.add(employee2)
-employees.sorted();
-console.log(employees)
+employees.add(employee2);
+
+console.log(employees);
