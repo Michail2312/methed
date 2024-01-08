@@ -5,12 +5,18 @@ export interface IUser {
   firstName: string;
   lastName: string;
   age: number;
-  year?: number;
-  specialty?: string;
-  post?: string;
 }
 
-export const student1: IUser = {
+export interface IStudent extends IUser {
+  year: number;
+  specialty: string;
+}
+
+export interface IEmployee extends IUser {
+  post: string;
+}
+
+export const student1: IStudent = {
   id: uuidv4(),
   firstName: 'John',
   lastName: 'Doe',
@@ -18,7 +24,7 @@ export const student1: IUser = {
   year: 10,
   specialty: 'backend developer',
 };
-export const student2: IUser = {
+export const student2: IStudent = {
   id: uuidv4(),
   firstName: 'Anna',
   lastName: 'Chapman',
@@ -26,7 +32,7 @@ export const student2: IUser = {
   year: 11,
   specialty: 'frontend developer',
 };
-export const student3: IUser = {
+export const student3: IStudent = {
   id: uuidv4(),
   firstName: 'John',
   lastName: 'Smith',
@@ -35,7 +41,7 @@ export const student3: IUser = {
   specialty: 'fullstack developer',
 };
 
-export const employee1: IUser = {
+export const employee1: IEmployee = {
   id: uuidv4(),
   firstName: 'James',
   lastName: 'Bond',
@@ -43,7 +49,7 @@ export const employee1: IUser = {
   post: 'Project Manager',
 };
 
-export const employee2: IUser = {
+export const employee2: IEmployee = {
   id: uuidv4(),
   firstName: 'Ethan',
   lastName: 'Hunt',
